@@ -1,0 +1,6 @@
+[package]
+name = "wiktionary-hatsuon"
+version = "0.0.0"
+edition = "2024"
+license = "MPL-2.0"
+authors = ["Aaron Yeoh Cruz <zeyonaut@gmail.com>"]

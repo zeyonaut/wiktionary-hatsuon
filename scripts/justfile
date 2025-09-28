@@ -1,0 +1,18 @@
+get-wiktionary:
+	mkdir -p enwiktionary-20250920
+	wget -P "enwiktionary-20250920" "https://dumps.wikimedia.org/enwiktionary/20250920/enwiktionary-20250920-pages-meta-current1.xml-p1p1500000.bz2"
+	wget -P "enwiktionary-20250920" "https://dumps.wikimedia.org/enwiktionary/20250920/enwiktionary-20250920-pages-meta-current1.xml-p1500001p3000000.bz2"
+	wget -P "enwiktionary-20250920" "https://dumps.wikimedia.org/enwiktionary/20250920/enwiktionary-20250920-pages-meta-current1.xml-p3000001p4500000.bz2"
+	wget -P "enwiktionary-20250920" "https://dumps.wikimedia.org/enwiktionary/20250920/enwiktionary-20250920-pages-meta-current1.xml-p4500001p6000000.bz2"
+	wget -P "enwiktionary-20250920" "https://dumps.wikimedia.org/enwiktionary/20250920/enwiktionary-20250920-pages-meta-current1.xml-p6000001p7500000.bz2"
+	wget -P "enwiktionary-20250920" "https://dumps.wikimedia.org/enwiktionary/20250920/enwiktionary-20250920-pages-meta-current1.xml-p7500001p9000000.bz2"
+	wget -P "enwiktionary-20250920" "https://dumps.wikimedia.org/enwiktionary/20250920/enwiktionary-20250920-pages-meta-current1.xml-p9000001p10500000.bz2"
+	wget -P "enwiktionary-20250920" "https://dumps.wikimedia.org/enwiktionary/20250920/enwiktionary-20250920-pages-meta-current1.xml-p10500001p11195567.bz2"
+
+unzip-wiktionary:
+	for file in `ls enwiktionary-20250920`; do \
+		bzip2 -dk enwiktionary-20250920/$file; \
+	done
+
+filter-wiktionary:
+	cargo +nightly -Zscript filter_wiktionary.rs enwiktionary-20250920
